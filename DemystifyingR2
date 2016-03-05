@@ -1,0 +1,76 @@
+#R Practice for Types of Cars
+#Code by: Natasha Iyer
+summary(mtcars)
+
+
+efficient <- subset(mtcars, mpg>23)
+
+
+#Use one of the commands you
+learned in the demystifying.R to answer this question.
+```{r}
+x <- subset(mtcars, mpg>23)
+y <- row.names(x)
+length(y)
+
+
+
+#shows cars where MPG greater than 30 and horsepower greater than 100
+subset(mtcars, mpg > 30 & hp > 100)
+
+
+#shows cars where MPG is less than 14 OR displacement is greater than 390
+subset(mtcars, mpg < 14 | disp > 390)
+
+
+#Note: You may be familiar with the || operator in Java. R uses one single & for the logical
+#operator AND. It also uses one | for the logical operator OR.
+
+
+
+
+
+
+#Prints the cars that have a 1/4 mile time (qsec) less than or equal to
+16.90 seconds to the console.
+
+subset(mtcars, qsec <= 16.90)
+
+
+#Save the subset of cars that weigh under 2000 pounds (weight is measured in lb/1000) to a variable called lightCars. Print the numbers of cars and the subset to the console.
+
+lightcars <- subset(mtcars, wt < 2)
+xy <- row.names(lightcars)
+xy
+length(xy)
+
+
+#Create new variable
+mtcars$year <- 1974
+
+#Drops a variable
+mtcars <- subset(mtcars, select = -year)
+
+
+#Adds year variable
+mtcars$year <- c(1973, 1974)
+
+
+
+#Drop the year variable from the data set.
+
+mtcars <- subset(mtcars, select = -year)
+
+
+#ifelse() preview
+mtcars$wt
+cond <- mtcars$wt < 3
+cond
+mtcars$weight_class <- ifelse(cond, 'light', 'average')
+mtcars$weight_class
+cond <- mtcars$wt > 3.5
+mtcars$weight_class <- ifelse(cond, 'heavy', mtcars$weight_class)
+mtcars$weight_class
+
+rm(cond)
+rm(efficient)
